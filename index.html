@@ -12,15 +12,15 @@
     <header>
         <section class="row mt-4">
             <div class="col-8">
-                <button class="ml-3 btn" id="high-score"><h4 class="pt-2 font-weight-bold">View Highscores!</h4></button>
+                <button class="ml-3 btn btn-lg" id="high-score"><h4 class="pt-2 font-weight-bold">View Highscores!</h4></button>
             </div>
             <div class="col-4">
-                <h4 class="text-right font-weight-bold">Timer: <span id="timer">0</span></h4>
+                <h4 class="text-right font-weight-bold timer-color">Timer: <span id="timer">0</span></h4>
             </div>
         </section>
     </header>
     <main>
-
+        <h1 class="display-3 timer-color font-weight-bold" id="outcome"></h1>
 
         <section class="container" id="homepage">
             <div class="row">
@@ -56,14 +56,31 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <p class="text-center">Which of the following is not one of the three </p>
+                        <h3 class="mt-3 text-center">
+                            Which of the following is not one of the three fundamental programming
+                            languages of the modern web?
+                        </h3>
+                    </div>
+                </div>
+                <div class="row ml-5">
+                    <div class="col-12 ml-5">
+                        <button class="incorrect my-2 ml-5 btn btn-lg ruby text-white d-inline">HTML</button>
+                    </div>
+                    <div class="col-12 ml-5">
+                        <button class="incorrect my-2 ml-5 btn btn-lg ruby text-white d-inline">CSS</button>
+                    </div>
+                    <div class="col-12 ml-5">
+                        <button class="correct my-2 ml-5 btn btn-lg ruby text-white d-inline">Python</button>
+                    </div>
+                    <div class="col-12 ml-5">
+                        <button class="incorrect my-2 ml-5 btn btn-lg ruby text-white d-inline">javascript</button>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="finish">
-            <h1 class="display-1 font-weight-bold text-center">Finished!</h1>
+            <h1 class="display-1 font-weight-bold text-center timer-color">Finished!</h1>
         </section>
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
