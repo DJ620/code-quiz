@@ -1,0 +1,22 @@
+body {
+    font-family: 'Overpass', sans-serif;
+}
+
+header {
+    width: 98%;
+    margin-top: 5vh;
+    margin-bottom: 15vh;
+}
+
+#high-score {
+    background-color: burlywood;
+}
+
+#high-score:hover {
+    border: 2px solid grey;
+    margin: -1px;
+}
+
+main {
+    background-color: burlywood;
+}
