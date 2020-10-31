@@ -7,9 +7,10 @@ var outcome = document.querySelector("#outcome");
 var correct = document.querySelectorAll(".correct");
 var incorrect = document.querySelectorAll(".incorrect");
 var question1 = document.querySelector("#question1");
+var question2 = document.querySelector("#question2");
 var finish = document.querySelector("#finish");
 
-var sectionArray = [question1, finish];
+var sectionArray = [question1, question2, finish];
 var sectionIndex = 0;
 var counter = 60;
 var score = 0;
