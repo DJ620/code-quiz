@@ -8,9 +8,12 @@ var correct = document.querySelectorAll(".correct");
 var incorrect = document.querySelectorAll(".incorrect");
 var question1 = document.querySelector("#question1");
 var question2 = document.querySelector("#question2");
+var question3 = document.querySelector("#question3");
+var question4 = document.querySelector("#question4");
 var finish = document.querySelector("#finish");
+var finalScore = document.querySelector("#final-score");
 
-var sectionArray = [question1, question2, finish];
+var sectionArray = [question1, question2, question3, question4, finish];
 var sectionIndex = 0;
 var counter = 60;
 var score = 0;
@@ -27,6 +30,7 @@ function reveal(element) {
 function right() {
     outcome.textContent = "Correct!";
     score++;
+    finalScore.textContent = score;
 }
 
 function wrong() {
@@ -80,3 +84,4 @@ for (var i=0; i<incorrect.length; i++) {
 
 // Javascript to run when page first loads
 hide();
+
