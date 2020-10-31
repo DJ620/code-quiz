@@ -80,5 +80,3 @@ for (var i=0; i<incorrect.length; i++) {
 
 // Javascript to run when page first loads
 hide();
-homepage.style.display="none";
-reveal(question2);
