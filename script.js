@@ -44,7 +44,7 @@ function next() {
     hide();
     sectionIndex++;
     reveal(sectionArray[sectionIndex]);
-    }, 1000);
+    }, 700);
 }
 
 //EventListeners
@@ -80,3 +80,5 @@ for (var i=0; i<incorrect.length; i++) {
 
 // Javascript to run when page first loads
 hide();
+homepage.style.display="none";
+reveal(question2);
