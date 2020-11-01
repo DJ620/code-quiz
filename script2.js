@@ -18,6 +18,7 @@ var finalScore = document.querySelector("#final-score");
 var counter = 60;
 var questionCount = 1;
 var score = 0;
+var timerInterval;
 
 // Questions
 var question1 = {
@@ -30,9 +31,20 @@ var question2 = {
     answers: ["Styling content", "Writing content", "Handling logic", "Interacting with the user"],
     correct: "Writing content"
 }
+var question3 = {
+    question: "What is CSS used for?",
+    answers: ["Styling content", "Writing content", "Handling logic", "Interacting with the user"],
+    correct: "Styling content"
+}
+
+var question4 = {
+    question: "Header, footer, nav, article, and section tags are all examples of ____________ HTML.",
+    answers: ["formal", "basic", "semantic", "pseudo"],
+    correct: "semantic"
+}
 
 // Arrays
-var allQuestions = [question1, question2];
+var allQuestions = [question1, question2, question3, question4];
 var options = [option1, option2, option3, option4];
 
 // Functions
@@ -62,12 +74,24 @@ function setOptions() {
     };
 };
 
+function finished() {
+    hide(questionBlock);
+    hide(outcome);
+    reveal(finish);
+    finalScore.textContent = score;
+}
+
 function nextQuestion() {
     hide(outcome);
-    questionNum.textContent = questionCount;
-    question.textContent = allQuestions[questionCount - 1].question;
-    setOptions();
-    questionCount++;
+    if (allQuestions[questionCount - 1] === undefined) {
+        clearInterval(timerInterval);
+        finished();
+    } else {
+        questionNum.textContent = questionCount;
+        question.textContent = allQuestions[questionCount - 1].question;
+        setOptions();
+        questionCount++;
+    }
 };
 
 //EventListeners
@@ -76,15 +100,12 @@ start.addEventListener("click", function() {
     reveal(questionBlock);
     nextQuestion();
     timer.textContent = counter;
-    var timerInterval = setInterval(function() {
+    timerInterval = setInterval(function() {
         counter--;
         timer.textContent = counter;
         if (counter === 0) {
             clearInterval(timerInterval);
-            hide(questionBlock);
-            hide(outcome);
-            reveal(finish);
-            finalScore.textContent = score;
+            finished();
         }
     }, 1000); 
 });

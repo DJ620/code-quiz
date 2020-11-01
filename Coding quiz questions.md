@@ -23,14 +23,6 @@ Question 3:
 
 
 Question 4:
-	What is JavaScript used for?
-
-​		Options:
-​			Styling content, Writing content, Handling logic, Interacting with the user
-
-
-
-Question 5:
 	Header, footer, nav, article, and section tags are all examples of __________________ HTML.
 
 ​		Options:
