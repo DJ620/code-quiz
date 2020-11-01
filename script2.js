@@ -54,47 +54,47 @@ var question6 = {
 
 var question7 = {
     question: "Which of the following is a popular CSS framework directed at responsive, mobile-first front-end web development?",
-    answers: ["Bootclick", "SASS", "jQuery", "Bootstrap"];
+    answers: ["Bootclick", "SASS", "jQuery", "Bootstrap"],
     correct: "Bootstrap"
 }
 var question8 = {
-    question: "",
-    answers: [];
-    correct: ""
+    question: "What is the pseudo-class activated when a mouse interacts with an element without clicking it?",
+    answers: ["Hover", "mouseOver", "Active", "Focus"],
+    correct: "Hover"
 }
 var question9 = {
-    question: "",
-    answers: [];
-    correct: ""
+    question: "What is the method used to display data in the browser's console?",
+    answers: ["console.print()", "console.send()", "console.push()", "console.log()"],
+    correct: "console.log()"
 }
 var question10 = {
-    question: "",
-    answers: [];
-    correct: ""
+    question: "Which of the following is not one of the six primitive JavaScript data types?",
+    answers: ["undefined", "function", "boolean", "string"],
+    correct: "function"
 }
 var question11 = {
     question: "",
-    answers: [];
+    answers: [],
     correct: ""
 }
 var question12 = {
     question: "",
-    answers: [];
+    answers: [],
     correct: ""
 }
 var question13 = {
     question: "",
-    answers: [];
+    answers: [],
     correct: ""
 }
 var question14 = {
     question: "",
-    answers: [];
+    answers: [],
     correct: ""
 }
 var question15 = {
     question: "",
-    answers: [];
+    answers: [],
     correct: ""
 }
 
