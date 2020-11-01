@@ -2,10 +2,10 @@ body {
     font-family: 'Overpass', sans-serif;
     background-color: #03256C;
 }
-/*3572b8*/
+
 header {
     width: 85vw;
-    margin-bottom: 15vh;
+    margin-bottom: 9vh;
     margin-left: auto;
     margin-right: auto;
 }
@@ -42,6 +42,11 @@ main {
     background-color: #770e17;
 }
 
+#question-block {
+    display: none;
+}
+
 #finish {
     padding-top: 20vh;
+    display: none;
 }
