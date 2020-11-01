@@ -43,6 +43,7 @@ main {
 }
 
 #question-block {
+    padding-top: 5vh;
     display: none;
 }
 
