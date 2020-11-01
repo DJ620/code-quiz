@@ -15,7 +15,7 @@ var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
 
 // Variables
-var counter = 20;
+var counter = 60;
 var questionCount = 1;
 var score = 0;
 
@@ -47,11 +47,13 @@ function reveal(element) {
 function correct() {
     outcome.textContent = "Correct!";
     reveal(outcome);
+    score++;
 };
 
 function incorrect() {
     outcome.textContent = "Wrong.";
     reveal(outcome);
+    counter -= 5;
 };
 
 function setOptions() {
@@ -88,17 +90,15 @@ start.addEventListener("click", function() {
 });
 
 for (var i = 0; i < options.length; i++) {
-    options[i].addEventListener("click", function() {
+    options[i].addEventListener("click", function(event) {
+        if (event.target.textContent === allQuestions[questionCount - 2].correct) {
+            correct();
+        } else {
+            incorrect();
+        }
         setTimeout(function() {
-            if (options[i] === allQuestions[questionCount - 1].correct) {
-                correct();
-                score++;
-            } else {
-                incorrect();
-                counter -= 5;
-            }
+            nextQuestion();
         }, 500);
-        nextQuestion();
     })
 }
 

@@ -30,7 +30,7 @@ main {
 
 #outcome {
     position: absolute;
-    bottom: 8vw;
+    bottom: 0;
     right: 5vw;
 }
 
