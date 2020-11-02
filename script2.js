@@ -78,9 +78,9 @@ var question11 = {
     correct: "none of the above"
 }
 var question12 = {
-    question: "",
-    answers: [],
-    correct: ""
+    question: "Which of the following is the method used to add data to the end of an array?",
+    answers: [".add()", ".push()", ".pull()", ".shift()"],
+    correct: ".push()"
 }
 var question13 = {
     question: "",
