@@ -1,4 +1,4 @@
-// querySelectors
+// querySelectors------------------------------------------------------------
 var timer = document.querySelector("#timer");
 var start = document.querySelector("#start");
 var outcome = document.querySelector("#outcome");
@@ -13,13 +13,13 @@ var option4 = document.querySelector("#option4");
 var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
 
-// Variables
-var counter = 1;
+// Variables-----------------------------------------------------------------
+var counter = 60;
 var questionCount = 1;
 var score = 0;
 var timerInterval;
 
-// Questions
+// Questions-----------------------------------------------------------------
 var question1 = {
     question: "Which of the following is not one of the three fundamental programming languages of the modern web?",
     answers: ["HTML", "CSS", "Bootstrap", "JavaScript"],
@@ -96,25 +96,30 @@ var question15 = {
     correct: ".addEventListener"
 };
 
-// Arrays
+// Arrays--------------------------------------------------------------------
 var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15];
 var options = [option1, option2, option3, option4];
 
-// Functions
+// Functions-----------------------------------------------------------------
+
+// When called, this function sets the display of whatever element is passed into it to none
 function hide(element) {
     element.style.display = "none";
 };
 
+// When called, this function sets the display of whatever element is passed into it to none
 function reveal(element) {
     element.style.display = "block";
 };
 
+// When called, this function displays the word 'correct' on the screen and adds 5 points to the score variable
 function correct() {
     outcome.textContent = "Correct!";
     reveal(outcome);
     score += 5;
 };
 
+// When called, this function displays the word 'wrong' on the screen and subtracts 10 seconds from the counter variable and 3 points from the score variable
 function incorrect() {
     outcome.textContent = "Wrong.";
     reveal(outcome);
@@ -122,12 +127,14 @@ function incorrect() {
     score -= 3;
 };
 
+//When called, this function loops through the array of answers in the specified question object and assigns them to one of the four option buttons
 function setOptions() {
     for (var i = 0; i < options.length; i++) {
         options[i].textContent = allQuestions[questionCount - 1].answers[i];
     };
 };
 
+// When called, this function displays the finished message, final score, and initials submission on the screen
 function finished() {
     hide(questionBlock);
     hide(outcome);
@@ -135,6 +142,7 @@ function finished() {
     finalScore.textContent = score;
 };
 
+// When called, this function displays the next question in the allQuestions array. If the array has run out, it will run the finished function and end the countdown
 function nextQuestion() {
     hide(outcome);
     if (allQuestions[questionCount - 1] === undefined) {
@@ -148,7 +156,9 @@ function nextQuestion() {
     };
 };
 
-//EventListeners
+//EventListeners-------------------------------------------------------------
+
+// When the start button is clicked, the first question is displayed and the counter begins counting down from 60. Once the counter reaches 0, the finished section is displayed
 start.addEventListener("click", function() {
     hide(homepage);
     reveal(questionBlock);
@@ -165,6 +175,7 @@ start.addEventListener("click", function() {
     }, 1000); 
 });
 
+// This loop sets an eventListener to all 4 options in the options array. If the option clicked is the right answer, the correct() function is run. Otherwise, the incorrect() function is run
 for (var i = 0; i < options.length; i++) {
     options[i].addEventListener("click", function(event) {
         if (event.target.textContent === allQuestions[questionCount - 2].correct) {
@@ -172,6 +183,7 @@ for (var i = 0; i < options.length; i++) {
         } else {
             incorrect();
         };
+        // A setTimeout that gives the user half a second to see the outcome of their chosen answer before running the nextQuestion() function
         setTimeout(function() {
             nextQuestion();
         }, 500);
