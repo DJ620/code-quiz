@@ -73,9 +73,9 @@ var question10 = {
     correct: "function"
 }
 var question11 = {
-    question: "",
-    answers: [],
-    correct: ""
+    question: "Which of the following data types is not able to be held in an array?",
+    answers: ["booleans", "strings", "numbers", "none of the above"],
+    correct: "none of the above"
 }
 var question12 = {
     question: "",
