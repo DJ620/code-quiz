@@ -75,7 +75,7 @@
             <h1 class="display-1 font-weight-bold text-center timer-color">Finished!</h1>
             <h1 class="display-3 text-center">Final Score: <span id="final-score"></span></h1>
             <h2 class="text-center">Enter your initials:</h2>
-            <form>
+            <form method="POST">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
                         <input type="text" class ="text-center font-weight-bold" id="initials">
@@ -83,7 +83,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
-                        <button type="submit" class="mt-2 btn ruby text-white btn-lg font-weight-bold text-center">Submit</button>
+                        <button type="submit" class="mt-2 btn ruby text-white btn-lg font-weight-bold text-center" id="submit-btn">Submit</button>
                     </div>
                 </div>
             </form>

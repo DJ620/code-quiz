@@ -12,11 +12,13 @@ var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
+var initials = document.querySelector("#initials");
+var submitBtn = document.querySelector("#submit-btn");
 
 // Variables-----------------------------------------------------------------
 
 // The variable used as my countdown/timer
-var counter = 60;
+var counter = 1;
 
 // The variable used to display what question number the user is on, and also used to determine which question to display on screen
 var questionCount = 1;
