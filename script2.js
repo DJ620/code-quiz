@@ -93,9 +93,9 @@ var question14 = {
     correct: "both B and C"
 }
 var question15 = {
-    question: "",
-    answers: [],
-    correct: ""
+    question: "What JavaScript method do you use when you want a function to run when a specific element is clicked?",
+    answers: [".whenClicked()", ".addEvent", ".addEventListener", ".listenForEvent"],
+    correct: ".addEventListener"
 }
 
 // Arrays
