@@ -14,9 +14,17 @@ var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
 
 // Variables-----------------------------------------------------------------
+
+// The variable used as my countdown/timer
 var counter = 60;
+
+// The variable used to display what question number the user is on, and also used to determine which question to display on screen
 var questionCount = 1;
+
+// The variable used to track the user's score
 var score = 0;
+
+// The variable that will hold my interval declared globally so I can clear it from different functions
 var timerInterval;
 
 // Questions-----------------------------------------------------------------
