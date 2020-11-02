@@ -88,9 +88,9 @@ var question13 = {
     correct: "1 to 10"
 }
 var question14 = {
-    question: "",
-    answers: [],
-    correct: ""
+    question: "Which of the following is the correct way for a JavaScript variable to be assigned to an HTML element with an id of 'variable'?",
+    answers: ["document.querySelector('variable')", "document.querySelector('#variable')", "document.getElementById('variable')", "both B and C"],
+    correct: "both B and C"
 }
 var question15 = {
     question: "",
