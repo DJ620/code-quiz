@@ -14,7 +14,7 @@ var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
 
 // Variables
-var counter = 60;
+var counter = 1;
 var questionCount = 1;
 var score = 0;
 var timerInterval;

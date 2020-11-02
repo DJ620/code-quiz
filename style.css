@@ -48,6 +48,11 @@ main {
 }
 
 #finish {
-    padding-top: 20vh;
+    padding-top: 10vh;
     display: none;
+}
+
+#initials {
+    color: #a72833;
+    background-color: #FEF6C9;
 }
