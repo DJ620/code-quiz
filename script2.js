@@ -158,8 +158,9 @@ start.addEventListener("click", function() {
     timerInterval = setInterval(function() {
         counter--;
         timer.textContent = counter;
-        if (counter === 0) {
+        if (counter <= 0) {
             clearInterval(timerInterval);
+            timer.textContent = 0;
             finished();
         }
     }, 1000); 
