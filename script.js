@@ -12,7 +12,7 @@ var option3 = document.querySelector("#option3");
 var option4 = document.querySelector("#option4");
 var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
-var initials = document.querySelector("#initials");
+var initialsInput = document.querySelector("#initials");
 var submitBtn = document.querySelector("#submit-btn");
 
 // Variables-----------------------------------------------------------------
@@ -199,6 +199,4 @@ for (var i = 0; i < options.length; i++) {
         }, 500);
     });
 };
-
-
 
