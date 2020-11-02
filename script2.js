@@ -83,9 +83,9 @@ var question12 = {
     correct: ".push()"
 }
 var question13 = {
-    question: "",
-    answers: [],
-    correct: ""
+    question: "What range of numbers will the following code pick from: \nMath.floor(Math.random() * 10) + 1",
+    answers: ["0 to 10", "1 to 11", "0 to 11", "1 to 10"],
+    correct: "1 to 10"
 }
 var question14 = {
     question: "",
