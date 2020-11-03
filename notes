@@ -1,0 +1,5 @@
+-Fix the highscore sort
+-Fix questions that no longer make sense with the randomizing of answers
+-Figure out why the highscores board isn't clearing each option before repopulating
+-make the view highscores button show the highscores board
+-Write code so that only the top ten scores are shown, rather than every score stored in the local storage
