@@ -113,6 +113,7 @@ var question15 = {
 // Arrays--------------------------------------------------------------------
 var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15];
 var options = [option1, option2, option3, option4];
+
 var playersArr = [];
 var checkScores = JSON.parse(localStorage.getItem("players"));
 if (checkScores) {
@@ -190,9 +191,7 @@ function scoreTable() {
     clearScore();
     var playersArr = JSON.parse(localStorage.getItem("players"));
     if (playersArr.length > 1) {
-        playersArr.sort(function(a,b) {
-            return a.score - b.score;
-        });
+        playersArr.sort((a,b)=>a.score-b.score);
     }
     for (var i=0; i<playersArr.length; i++) {
         var tableRank = document.createElement("td");
@@ -217,10 +216,8 @@ function style(element) {
 }
 
 function clearScore () {
-    if (table.children) {
-        for (let i = 0; i<table.children.length; i++) {
-            table.children[i].remove();
-        }
+    for (let i = 0; i<table.children.length; i++) {
+         table.children[i].remove();
     }
 }
 
