@@ -140,10 +140,7 @@ function incorrect() {
 //When called, this function loops through the array of answers in the specified question object and assigns them to one of the four option buttons
 function setOptions() {
     for (var i = 0; i < options.length; i++) {
-        var answersArr = allQuestions[questionCount - 1].answers;
-        var randomIndex = Math.floor(Math.random() * answersArr.length);
-        options[i].textContent = answersArr[randomIndex];
-        answersArr.splice(randomIndex, 1);
+        options[i].textContent = allQuestions[questionCount - 1].answers[i];
     };
 };
 
@@ -168,6 +165,9 @@ function nextQuestion() {
         questionCount++;
     };
 };
+
+// Testing
+
 
 //EventListeners-------------------------------------------------------------
 
