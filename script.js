@@ -87,8 +87,8 @@ var question10 = {
 };
 var question11 = {
     question: "Which of the following data types is not able to be held in an array?",
-    answers: ["booleans", "strings", "numbers", "none of the above"],
-    correct: "none of the above"
+    answers: ["booleans", "strings", "numbers", "for loops"],
+    correct: "for loops"
 };
 var question12 = {
     question: "Which of the following is the method used to add data to the end of an array?",
@@ -102,8 +102,8 @@ var question13 = {
 };
 var question14 = {
     question: "Which of the following is the correct way for a JavaScript variable to be assigned to an HTML element with an id of 'variable'?",
-    answers: ["document.querySelector('variable')", "document.querySelector('#variable')", "document.getElementById('variable')", "both B and C"],
-    correct: "both B and C"
+    answers: ["document.querySelector('variable')", "document.querySelector('#variable')", "document.getElementByClass('#variable')", "document.assignToElement('#variable')"],
+    correct: "document.querySelector('#variable')"
 };
 var question15 = {
     question: "What JavaScript method do you use when you want a function to run when a specific element is clicked?",
@@ -287,16 +287,5 @@ restart.addEventListener("click", function() {
     questionCount = 1;
     counter = 60;
     score = 0;
-    timer.textContent = counter;
-    reveal(questionBlock);
-    nextQuestion();
-    timerInterval = setInterval(function() {
-        counter--;
-        timer.textContent = counter;
-        if (counter <= 0) {
-            clearInterval(timerInterval);
-            timer.textContent = 0;
-            finished();
-        };
-    }, 1000); 
+    reveal(homepage);
 });
