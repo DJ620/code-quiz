@@ -1,4 +1,5 @@
 // querySelectors------------------------------------------------------------
+var scoreBtn = document.querySelector("#high-score");
 var timer = document.querySelector("#timer");
 var start = document.querySelector("#start");
 var outcome = document.querySelector("#outcome");
@@ -119,9 +120,9 @@ var checkScores = JSON.parse(localStorage.getItem("players"));
 if (checkScores) {
     for (var i =0; i<checkScores.length; i++) {
         playersArr.push(checkScores[i]);
-    }
+    };
     localStorage.setItem("players", JSON.stringify(playersArr));
-}
+};
 
 // Functions-----------------------------------------------------------------
 
@@ -162,7 +163,7 @@ function setOptions() {
     for (var i = 0; i<answerReset.length; i++) {
         var answersArr = allQuestions[questionCount - 1].answers;
         answersArr[answersArr.length] = answerReset[i];
-    }
+    };
 };
 
 // When called, this function displays the finished message, final score, and initials submission on the screen
@@ -191,8 +192,11 @@ function scoreTable() {
     clearScore();
     var playersArr = JSON.parse(localStorage.getItem("players"));
     if (playersArr.length > 1) {
-        playersArr.sort((a,b)=>a.score-b.score);
-    }
+        playersArr.sort((a,b)=>b.score-a.score);
+    };
+    if (playersArr.length > 10) {
+        playersArr.splice(10);
+    };
     for (var i=0; i<playersArr.length; i++) {
         var tableRank = document.createElement("td");
         tableRank.textContent = i+1;
@@ -208,21 +212,29 @@ function scoreTable() {
         row.append(tableRank);
         row.append(tableInitials);
         row.append(tableScore);
-    }
-}
+    };
+};
 
 function style(element) {
     element.setAttribute("class", "h3");
-}
+};
 
 function clearScore () {
-    for (let i = 0; i<table.children.length; i++) {
-         table.children[i].remove();
-    }
-}
+    table.innerHTML="";
+};
 
 
 //EventListeners-------------------------------------------------------------
+
+scoreBtn.addEventListener("click", function() {
+    scoreTable();
+    hide(homepage);
+    hide(questionBlock);
+    hide(outcome);
+    hide(finish);
+    reveal(scoreBlock);
+    clearInterval(timerInterval);
+})
 
 // When the start button is clicked, the first question is displayed and the counter begins counting down from 60. Once the counter reaches 0, the finished section is displayed
 start.addEventListener("click", function() {
@@ -286,4 +298,4 @@ restart.addEventListener("click", function() {
             finished();
         };
     }, 1000); 
-})
+});
