@@ -191,12 +191,6 @@ function nextQuestion() {
 function scoreTable() {
     clearScore();
     var playersArr = JSON.parse(localStorage.getItem("players"));
-    if (playersArr.length > 1) {
-        playersArr.sort((a,b)=>b.score-a.score);
-    };
-    if (playersArr.length > 10) {
-        playersArr.splice(10);
-    };
     for (var i=0; i<playersArr.length; i++) {
         var tableRank = document.createElement("td");
         tableRank.textContent = i+1;
@@ -234,6 +228,7 @@ scoreBtn.addEventListener("click", function() {
     hide(finish);
     reveal(scoreBlock);
     clearInterval(timerInterval);
+    timer.textContent = 0;
 })
 
 // When the start button is clicked, the first question is displayed and the counter begins counting down from 60. Once the counter reaches 0, the finished section is displayed
@@ -274,6 +269,12 @@ submitBtn.addEventListener("click", function(event) {
     playersArr[playersArr.length] = {
         initials: initialsInput.value,
         score: score
+    };
+    if (playersArr.length > 1) {
+        playersArr.sort((a,b)=>b.score-a.score);
+    };
+    if (playersArr.length > 10) {
+        playersArr.splice(10);
     };
     localStorage.setItem("players", JSON.stringify(playersArr));
     hide(finish);
