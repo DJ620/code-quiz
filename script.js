@@ -16,6 +16,7 @@ var finalScore = document.querySelector("#final-score");
 var initialsInput = document.querySelector("#initials");
 var submitBtn = document.querySelector("#submit-btn");
 var scoreBlock = document.querySelector("#highscore-block");
+var table = document.querySelector("tbody");
 var restart = document.querySelector("#restart");
 
 // Variables-----------------------------------------------------------------
@@ -179,6 +180,7 @@ function nextQuestion() {
 };
 
 function scoreTable() {
+    clearScore();
     var playersArr = JSON.parse(localStorage.getItem("players"));
     if (playersArr.length > 1) {
         playersArr.sort(function(a,b) {
@@ -196,7 +198,6 @@ function scoreTable() {
         tableScore.textContent = playersArr[i].score;
         style(tableScore);
         var row = document.createElement("tr");
-        var table = document.querySelector("tbody");
         table.append(row);
         row.append(tableRank);
         row.append(tableInitials);
@@ -207,6 +208,15 @@ function scoreTable() {
 function style(element) {
     element.setAttribute("class", "h3");
 }
+
+function clearScore () {
+    if (table.children) {
+        for (let i = 0; i<table.children.length; i++) {
+            table.children[i].remove();
+        }
+    }
+}
+
 
 //EventListeners-------------------------------------------------------------
 
