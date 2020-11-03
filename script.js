@@ -15,11 +15,13 @@ var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
 var initialsInput = document.querySelector("#initials");
 var submitBtn = document.querySelector("#submit-btn");
+var scoreBlock = document.querySelector("#highscore-block");
+var restart = document.querySelector("#restart");
 
 // Variables-----------------------------------------------------------------
 
 // The variable used as my countdown/timer
-var counter = 1;
+var counter = 60;
 
 // The variable used to display what question number the user is on, and also used to determine which question to display on screen
 var questionCount = 1;
@@ -110,6 +112,7 @@ var question15 = {
 // Arrays--------------------------------------------------------------------
 var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15];
 var options = [option1, option2, option3, option4];
+var playersArr = [];
 
 // Functions-----------------------------------------------------------------
 
@@ -140,12 +143,17 @@ function incorrect() {
 
 //When called, this function loops through the array of answers in the specified question object and assigns them to one of the four option buttons
 function setOptions() {
+    var answerReset = [];
     for (var i = 0; i < options.length; i++) {
         var answersArr = allQuestions[questionCount - 1].answers;
         var randomIndex = Math.floor(Math.random() * answersArr.length);
         options[i].children[1].textContent = answersArr[randomIndex];
-        answersArr.splice(randomIndex, 1);
+        answerReset.push(answersArr.splice(randomIndex, 1));
     };
+    for (var i = 0; i<answerReset.length; i++) {
+        var answersArr = allQuestions[questionCount - 1].answers;
+        answersArr[answersArr.length] = answerReset[i];
+    }
 };
 
 // When called, this function displays the finished message, final score, and initials submission on the screen
@@ -169,6 +177,36 @@ function nextQuestion() {
         questionCount++;
     };
 };
+
+function scoreTable() {
+    var playersArr = JSON.parse(localStorage.getItem("players"));
+    if (playersArr.length > 1) {
+        playersArr.sort(function(a,b) {
+            return a.score - b.score;
+        });
+    }
+    for (var i=0; i<playersArr.length; i++) {
+        var tableRank = document.createElement("td");
+        tableRank.textContent = i+1;
+        style(tableRank);
+        var tableInitials = document.createElement("td");
+        tableInitials.textContent = playersArr[i].initials;
+        style(tableInitials);
+        var tableScore = document.createElement("td");
+        tableScore.textContent = playersArr[i].score;
+        style(tableScore);
+        var row = document.createElement("tr");
+        var table = document.querySelector("tbody");
+        table.append(row);
+        row.append(tableRank);
+        row.append(tableInitials);
+        row.append(tableScore);
+    }
+}
+
+function style(element) {
+    element.setAttribute("class", "h3");
+}
 
 //EventListeners-------------------------------------------------------------
 
@@ -207,12 +245,31 @@ optionList.addEventListener("click", function(event) {
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
-    var player = {
+    playersArr[playersArr.length] = {
         initials: initialsInput.value,
         score: score
     };
-    if (initialsInput.value) {
-        localStorage.setItem("player-score", JSON.stringify(player));
-    };
+    localStorage.setItem("players", JSON.stringify(playersArr));
+    hide(finish);
+    scoreTable();
+    reveal(scoreBlock);
 });
 
+restart.addEventListener("click", function() {
+    hide(scoreBlock);
+    questionCount = 1;
+    counter = 60;
+    score = 0;
+    timer.textContent = counter;
+    reveal(questionBlock);
+    nextQuestion();
+    timerInterval = setInterval(function() {
+        counter--;
+        timer.textContent = counter;
+        if (counter <= 0) {
+            clearInterval(timerInterval);
+            timer.textContent = 0;
+            finished();
+        };
+    }, 1000); 
+})

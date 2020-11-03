@@ -26,6 +26,7 @@ main {
     background-color: #2c8c99;
     height: auto;
     width: 100vw;
+    padding-bottom: 5vh;
 }
 
 #outcome {
@@ -42,7 +43,7 @@ main {
     background-color: #770e17;
 }
 
-#question-block {
+#question-block, #highscore-block {
     padding-top: 5vh;
     display: none;
 }
