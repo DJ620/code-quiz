@@ -6,6 +6,7 @@ var homepage = document.querySelector("#homepage");
 var questionBlock = document.querySelector("#question-block");
 var questionNum = document.querySelector("#question-number");
 var question = document.querySelector("#question");
+var optionList = document.querySelector("#options-list");
 var option1 = document.querySelector("#option1");
 var option2 = document.querySelector("#option2");
 var option3 = document.querySelector("#option3");
@@ -18,7 +19,7 @@ var submitBtn = document.querySelector("#submit-btn");
 // Variables-----------------------------------------------------------------
 
 // The variable used as my countdown/timer
-var counter = 60;
+var counter = 1;
 
 // The variable used to display what question number the user is on, and also used to determine which question to display on screen
 var questionCount = 1;
@@ -142,7 +143,7 @@ function setOptions() {
     for (var i = 0; i < options.length; i++) {
         var answersArr = allQuestions[questionCount - 1].answers;
         var randomIndex = Math.floor(Math.random() * answersArr.length);
-        options[i].textContent = answersArr[randomIndex];
+        options[i].children[1].textContent = answersArr[randomIndex];
         answersArr.splice(randomIndex, 1);
     };
 };
@@ -189,8 +190,9 @@ start.addEventListener("click", function() {
 });
 
 // This loop sets an eventListener to all 4 options in the options array. If the option clicked is the right answer, the correct() function is run. Otherwise, the incorrect() function is run
-for (var i = 0; i < options.length; i++) {
-    options[i].addEventListener("click", function(event) {
+
+optionList.addEventListener("click", function(event) {
+    if (event.target.matches("button")) {
         if (event.target.textContent === allQuestions[questionCount - 2].correct) {
             correct();
         } else {
@@ -200,6 +202,17 @@ for (var i = 0; i < options.length; i++) {
         setTimeout(function() {
             nextQuestion();
         }, 500);
-    });
-};
+    };
+});
+
+submitBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    var player = {
+        initials: initialsInput.value,
+        score: score
+    };
+    if (initialsInput.value) {
+        localStorage.setItem("player-score", JSON.stringify(player));
+    };
+});
 
