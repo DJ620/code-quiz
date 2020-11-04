@@ -1,5 +1,7 @@
 // querySelectors==================================================================================================================
+var jeopardy = document.querySelector("#jeopardy");
 var scoreBtn = document.querySelector("#high-score");
+var stopMusic = document.querySelector("#stop-music");
 var timer = document.querySelector("#timer");
 var start = document.querySelector("#start");
 var outcome = document.querySelector("#outcome");
@@ -186,9 +188,12 @@ function setOptions() {
 // When called, this function displays the finished message, final score, and initials submission on the screen
 function finished() {
     hide(questionBlock);
+    hide(stopMusic);
     hide(outcome);
+    reveal(scoreBtn);
     reveal(finish);
     finalScore.textContent = score;
+    jeopardy.pause();
 };
 
 /* When called, this function displays the next question in the allQuestions array. 
@@ -215,8 +220,10 @@ function nextQuestion() {
 // When called, this function displays the highscores table
 function scoreTable() {
     hide(scoreBtn);
+    hide(stopMusic);
     reveal(restart);
     clearScore();
+    jeopardy.pause();
 
     // Fetches the previous high scores from local storage
     var playersArr = JSON.parse(localStorage.getItem("players"));
@@ -265,8 +272,12 @@ scoreBtn.addEventListener("click", function() {
    counting down from 60. Once the counter reaches 0, the finished section is displayed */
 start.addEventListener("click", function() {
     hide(homepage);
+    hide(scoreBtn);
     reveal(questionBlock);
+    reveal(stopMusic);
     nextQuestion();
+    jeopardy.play();
+    jeopardy.volume = 0.25;
     timer.textContent = counter;
     timerInterval = setInterval(function() {
         counter--;
@@ -277,6 +288,12 @@ start.addEventListener("click", function() {
             finished();
         };
     }, 1000); 
+});
+
+stopMusic.addEventListener("click", function() {
+    jeopardy.pause();
+    hide(stopMusic);
+    reveal(scoreBtn);
 });
 
 /* When an answer option button is clicked, this function checks if the 
