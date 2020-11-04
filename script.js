@@ -1,4 +1,4 @@
-// querySelectors------------------------------------------------------------
+// querySelectors==================================================================================================================
 var scoreBtn = document.querySelector("#high-score");
 var timer = document.querySelector("#timer");
 var start = document.querySelector("#start");
@@ -16,7 +16,7 @@ var scoreBlock = document.querySelector("#highscore-block");
 var table = document.querySelector("tbody");
 var restart = document.querySelector("#restart");
 
-// Variables-----------------------------------------------------------------
+// Variables=======================================================================================================================
 
 // The variable used as my countdown/timer
 var counter = 10;
@@ -30,7 +30,7 @@ var score = 0;
 // The variable that will hold my interval declared globally so I can clear it from different functions
 var timerInterval;
 
-// Questions-----------------------------------------------------------------
+// Questions=======================================================================================================================
 var question1 = {
     question: "Which of the following is not one of the three fundamental programming languages of the modern web?",
     answers: ["HTML", "CSS", "Bootstrap", "JavaScript"],
@@ -107,8 +107,13 @@ var question15 = {
     correct: ".addEventListener"
 };
 
-// Arrays--------------------------------------------------------------------
-var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15];
+// Arrays==========================================================================================================================
+
+// An array of all the question objects
+var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, 
+                    question9, question10, question11, question12, question13, question14, question15];
+
+// An empty array that will hold the 10 previous highest scores
 var playersArr = [];
 
 // This block of code checks if there is data in local storage, and if there is, it pushes it to the above playersArr
@@ -120,7 +125,7 @@ if (checkScores) {
     localStorage.setItem("players", JSON.stringify(playersArr));
 };
 
-// Functions-----------------------------------------------------------------
+// Functions=======================================================================================================================
 
 // When called, this function sets the display of whatever element is passed into it to none
 function hide(element) {
@@ -139,7 +144,8 @@ function correct() {
     score += 5;
 };
 
-// When called, this function displays the word 'wrong' on the screen and subtracts 10 seconds from the counter variable and 3 points from the score variable
+/* When called, this function displays the word 'wrong' on the screen and subtracts 10 seconds from the counter 
+   variable and 3 points from the score variable */
 function incorrect() {
     outcome.textContent = "Wrong.";
     reveal(outcome);
@@ -147,7 +153,8 @@ function incorrect() {
     score -= 3;
 };
 
-//When called, this function loops through the array of answers in the specified question object and assigns them to one of the four option buttons
+/* When called, this function loops through the array of answers in the specified question object and assigns 
+   them to one of the four option buttons */
 function setOptions() {
     var answerReset = [];
     for (var i = 0; i < optionList.children.length; i++) {
@@ -156,7 +163,8 @@ function setOptions() {
         var answersArr = allQuestions[questionCount - 1].answers;
         var randomIndex = Math.floor(Math.random() * answersArr.length);
 
-        // Randomizes the order of the answers so that if a user takes the quiz multiple times, the answers will be in a different order
+        /* Randomizes the order of the answers so that if a user takes the quiz multiple times, 
+           the answers will be in a different order */
         optionList.children[i].children[0].children[1].textContent = answersArr[randomIndex];
 
         // Ensures that answers don't get duplicated by moving them to a new array once they've been assigned a button
@@ -177,7 +185,8 @@ function finished() {
     finalScore.textContent = score;
 };
 
-// When called, this function displays the next question in the allQuestions array. If the array has run out, it will run the finished function and end the countdown
+/* When called, this function displays the next question in the allQuestions array. 
+   If the array has run out, it will run the finished function and end the countdown */
 function nextQuestion() {
     hide(outcome);
     if (allQuestions[questionCount - 1] === undefined) {
@@ -200,7 +209,8 @@ function scoreTable() {
     // Fetches the previous high scores from local storage
     var playersArr = JSON.parse(localStorage.getItem("players"));
 
-    // Loops through the array of player objects and creates elements to display the rank, initials, and score of the 10 best players
+    /* Loops through the array of player objects and creates elements to display 
+    the rank, initials, and score of the 10 best players */
     for (var i=0; i<playersArr.length; i++) {
         var tableRank = document.createElement("td");
         tableRank.textContent = i+1;
@@ -224,8 +234,10 @@ function clearScore () {
 };
 
 
-//EventListeners-------------------------------------------------------------
+//EventListeners===================================================================================================================
 
+/* At any point in the quiz, if the player clicks the view highscores button, they will exit the quiz,
+   the timerInterval will be cleared, and the highscores table will be displayed */
 scoreBtn.addEventListener("click", function() {
     scoreTable();
     hide(homepage);
@@ -237,7 +249,8 @@ scoreBtn.addEventListener("click", function() {
     timer.textContent = 0;
 })
 
-// When the start button is clicked, the first question is displayed and the counter begins counting down from 60. Once the counter reaches 0, the finished section is displayed
+/* When the start button is clicked, the first question is displayed and the counter begins 
+   counting down from 60. Once the counter reaches 0, the finished section is displayed */
 start.addEventListener("click", function() {
     hide(homepage);
     reveal(questionBlock);
@@ -254,7 +267,8 @@ start.addEventListener("click", function() {
     }, 1000); 
 });
 
-// When an answer option button is clicked, this function checks if the answer is correct or not, and runs the appropriate function
+/* When an answer option button is clicked, this function checks if the 
+   answer is correct or not, and runs the appropriate function */
 optionList.addEventListener("click", function(event) {
     if (event.target.matches("button")) {
         if (event.target.textContent === allQuestions[questionCount - 2].correct) {
@@ -262,7 +276,8 @@ optionList.addEventListener("click", function(event) {
         } else {
             incorrect();
         };
-        // A setTimeout that gives the user half a second to see the outcome of their chosen answer before running the nextQuestion() function
+        /* A setTimeout that gives the user half a second to see the outcome of 
+           their chosen answer before running the nextQuestion() function */
         setTimeout(function() {
             nextQuestion();
         }, 500);
