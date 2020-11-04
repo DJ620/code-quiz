@@ -47,6 +47,10 @@ main {
     background-color: #770e17;
 }
 
+.correct {
+    background-color: green !important;
+}
+
 #question-block, #highscore-block {
     padding-top: 5vh;
     display: none;

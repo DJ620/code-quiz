@@ -151,6 +151,11 @@ function incorrect() {
     reveal(outcome);
     counter -= 10;
     score -= 3;
+    for (var i = 0; i < optionList.children.length; i++) {
+        if (optionList.children[i].children[0].children[1].textContent === allQuestions[questionCount - 2].correct) {
+            optionList.children[i].children[0].children[1].classList.add("correct");
+        };
+    };
 };
 
 /* When called, this function loops through the array of answers in the specified question object and assigns 
@@ -189,6 +194,9 @@ function finished() {
    If the array has run out, it will run the finished function and end the countdown */
 function nextQuestion() {
     hide(outcome);
+    for (var i = 0; i < optionList.children.length; i++) {
+        optionList.children[i].children[0].children[1].classList.remove("correct");
+    }
     if (allQuestions[questionCount - 1] === undefined) {
         clearInterval(timerInterval);
         finished();
