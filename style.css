@@ -14,11 +14,11 @@ header {
     display: none;
 }
 
-.topbutton {
+#high-score {
     background-color: #2c8c99;
 }
 
-.topbutton:hover {
+#high-score:hover {
     background-color: #217480;
 }
 
