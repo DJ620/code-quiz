@@ -218,6 +218,7 @@ function scoreTable() {
     };
 };
 
+// Resets the highscore table so that no scores are repeated
 function clearScore () {
     table.innerHTML="";
 };
@@ -253,8 +254,7 @@ start.addEventListener("click", function() {
     }, 1000); 
 });
 
-// This loop sets an eventListener to all 4 options in the options array. If the option clicked is the right answer, the correct() function is run. Otherwise, the incorrect() function is run
-
+// When an answer option button is clicked, this function checks if the answer is correct or not, and runs the appropriate function
 optionList.addEventListener("click", function(event) {
     if (event.target.matches("button")) {
         if (event.target.textContent === allQuestions[questionCount - 2].correct) {
@@ -269,8 +269,11 @@ optionList.addEventListener("click", function(event) {
     };
 });
 
+// When this button is clicked, the user's initials and score are added to the playersArr array
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
+
+    // If the user hasn't entered their intials, they are shown an alert
     if (!initialsInput.value) {
         alert("Please enter your initials");
         return;
@@ -279,18 +282,25 @@ submitBtn.addEventListener("click", function(event) {
         initials: initialsInput.value,
         score: score
     };
+
+    // Sorts the objects in the playersArr array by highest score
     if (playersArr.length > 1) {
         playersArr.sort((a,b)=>b.score-a.score);
     };
+
+    // This conditional statement ensures that local storage only holds the 10 highest scores
     if (playersArr.length > 10) {
         playersArr.splice(10);
     };
+
+    // Sends the playersArr array to local storage
     localStorage.setItem("players", JSON.stringify(playersArr));
     hide(finish);
     scoreTable();
     reveal(scoreBlock);
 });
 
+// When clicked, this button will bring the user back to the homepage and reset the timer, score, and questionCount variables
 restart.addEventListener("click", function() {
     hide(scoreBlock);
     hide(restart);
