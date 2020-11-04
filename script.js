@@ -19,7 +19,7 @@ var restart = document.querySelector("#restart");
 // Variables=======================================================================================================================
 
 // The variable used as my countdown/timer
-var counter = 10;
+var counter = 60;
 
 // The variable used to display what question number the user is on, and also used to determine which question to display on screen
 var questionCount = 1;
