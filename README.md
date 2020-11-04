@@ -8,7 +8,7 @@ One of the features of this quiz that I am very proud of is that each time you t
 
 I also utilized local storage to hold the data of user's initials and their score. The local storage will hold the 10 highest scores played on a user's device, and display them on the Highscores board.
 
-I used Bootstrap to help make the layout responsive, but also added in some of my own CSS styles to make the quiz page look interesting. I found a great website, Coolors.io, that generates color schemes, and used it to choose colors for this quiz page. I also took the font, Overpass, from Google fonts.
+I used Bootstrap to help make the layout responsive, but also added in some of my own CSS styles to make the quiz page look interesting. I found a great website, Coolors.io, that generates color schemes, and used it to choose colors for this quiz page. I also took the font, Overpass, from Google fonts. The background music is the theme from the popular TV game show, 'Jeopardy'.
 
 This coding quiz can be used in many ways. The most obvious would be to test someone's knowledge of HTML, CSS, and JavaScript. I believe it can also be used by me to show that I have a good understanding of basic JavaScript.
 
@@ -31,15 +31,15 @@ When you first get to the page, you will see a message describing the quiz and i
 
 ![Question screenshot](question.png)
 
-Each question will be formatted the same, with four options. If the user chooses the correct answer, the word 'Correct!' will be displayed in the bottom right of the screen. If the user chooses the wrong answer, the word 'Wrong' will be displayed. As stated in my description, each time a user takes the quiz, the answer options will be in a different order.
+When the user clicks start, the background music will begin to play, and the timer will begin counting down from 60. The 'View Highscores!' button will be replaced with a new button that allows the user to switch off the music if they'd rather take the quiz in silence. Each question will be formatted the same, with four options. If the user chooses the correct answer, the word 'Correct!' will be displayed in the bottom right of the screen. If the user chooses the wrong answer, the word 'Wrong' will be displayed. As stated in my description, each time a user takes the quiz, the answer options will be in a different order.
 
 ![Finished screenshot](finished.png)
 
-When the user runs out of time, or finishes answering all questions, they will be presented with their final score, and the option of entering their initials to be displayed on the Highscores board. 
+When the user runs out of time, or finishes answering all questions, the music will stop playing (if they didn't turn the music off earlier), and they will be presented with their final score and the option of entering their initials to be displayed on the Highscores board. 
 
 ![Highscores Board screenshot](highscores.png)
 
-Once the user has submitted their initials, or if at any time the user hits the 'View Highscores' button, they will be taken to the Highscores Board. This page will display up to the 10 highest scores played on that user's device. This data is stored in local storage as an array of objects.
+Once the user has submitted their initials, or if at any time the user hits the 'View Highscores' button, they will be taken to the Highscores Board. This page will display up to the 10 highest scores played on that user's device. This data is stored in local storage as an array of objects. The algorithm dynamically creates the objects by setting them to the index of the length of the array.
 
 ## Credits
 
@@ -55,7 +55,7 @@ I utilized the website coolors.io to generate a color scheme.
 
 https://coolors.co/
 
-In addition to what I have learned from my bootcamp, I also learned a great deal from the websites CodeCademy and FreeCodeCamp
+In addition to what I have learned from my bootcamp, I also learned a great deal from the websites CodeCademy and FreeCodeCamp.
 
 http://www.codecademy.com
 

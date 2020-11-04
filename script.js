@@ -186,18 +186,6 @@ function setOptions() {
     };
 };
 
-/* When called, this function displays the finished message, final score, and initials submission 
-   on the screen and stops the music if the music is still being played */
-function finished() {
-    hide(questionBlock);
-    hide(stopMusic);
-    hide(outcome);
-    reveal(scoreBtn);
-    reveal(finish);
-    finalScore.textContent = score;
-    jeopardy.pause();
-};
-
 // When called, this function displays the next question in the allQuestions array  
 function nextQuestion() {
     hide(outcome);
@@ -220,12 +208,26 @@ function nextQuestion() {
     };
 };
 
+/* When called, this function displays the finished message, final score, and initials submission 
+   on the screen and stops the music if the music is still being played */
+function finished() {
+    hide(questionBlock);
+    hide(stopMusic);
+    hide(outcome);
+    reveal(scoreBtn);
+    reveal(finish);
+    finalScore.textContent = score;
+    jeopardy.pause();
+};
+
 // When called, this function displays the highscores table
 function scoreTable() {
     hide(scoreBtn);
     hide(stopMusic);
     reveal(restart);
-    clearScore();
+
+    // Resets the highscore table so that no scores are repeated
+    table.innerHTML = "";
 
     // Fetches the previous high scores from local storage
     var playersArr = JSON.parse(localStorage.getItem("players"));
@@ -249,26 +251,7 @@ function scoreTable() {
     };
 };
 
-// Resets the highscore table so that no scores are repeated
-function clearScore () {
-    table.innerHTML="";
-};
-
-
 //EventListeners===================================================================================================================
-
-/* At any point in the quiz, if the player clicks the view highscores button, they will exit the quiz,
-   the timerInterval will be cleared, and the highscores table will be displayed */
-scoreBtn.addEventListener("click", function() {
-    scoreTable();
-    hide(homepage);
-    hide(questionBlock);
-    hide(outcome);
-    hide(finish);
-    reveal(scoreBlock);
-    clearInterval(timerInterval);
-    timer.textContent = 0;
-})
 
 /* When the start button is clicked, the first question is displayed, background music begins to play, and 
    the counter begins counting down from 60. Once the counter reaches 0, the finished section is displayed */
@@ -291,6 +274,19 @@ start.addEventListener("click", function() {
             finished();
         };
     }, 1000); 
+});
+
+/* At any point in the quiz, if the player clicks the view highscores button, they will exit the quiz,
+   the timerInterval will be cleared, and the highscores table will be displayed */
+scoreBtn.addEventListener("click", function() {
+    scoreTable();
+    hide(homepage);
+    hide(questionBlock);
+    hide(outcome);
+    hide(finish);
+    reveal(scoreBlock);
+    clearInterval(timerInterval);
+    timer.textContent = 0;
 });
 
 // When clicked, this button stops the background music from playing and replaces the button with the 'View Highscores' button
