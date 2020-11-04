@@ -276,8 +276,9 @@ start.addEventListener("click", function() {
     reveal(questionBlock);
     reveal(stopMusic);
     nextQuestion();
+    jeopardy.currentTime = 0;
     jeopardy.play();
-    jeopardy.volume = 0.25;
+    jeopardy.volume = 0.5;
     timer.textContent = counter;
     timerInterval = setInterval(function() {
         counter--;

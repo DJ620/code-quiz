@@ -14,12 +14,20 @@ header {
     display: none;
 }
 
-.button {
+#high-score {
     background-color: #2c8c99;
 }
 
-.button:hover {
+#high-score:hover {
     background-color: #217480;
+}
+
+#stop-music {
+    background-color: #c6af2e;
+}
+
+#stop-music:hover {
+    background-color: #ffee88;
 }
 
 .timer-color {
