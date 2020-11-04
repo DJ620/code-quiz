@@ -8,10 +8,6 @@ var questionBlock = document.querySelector("#question-block");
 var questionNum = document.querySelector("#question-number");
 var question = document.querySelector("#question");
 var optionList = document.querySelector("#options-list");
-var option1 = document.querySelector("#option1");
-var option2 = document.querySelector("#option2");
-var option3 = document.querySelector("#option3");
-var option4 = document.querySelector("#option4");
 var finish = document.querySelector("#finish");
 var finalScore = document.querySelector("#final-score");
 var initialsInput = document.querySelector("#initials");
@@ -113,7 +109,6 @@ var question15 = {
 
 // Arrays--------------------------------------------------------------------
 var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15];
-var options = [option1, option2, option3, option4];
 
 var playersArr = [];
 var checkScores = JSON.parse(localStorage.getItem("players"));
@@ -154,10 +149,10 @@ function incorrect() {
 //When called, this function loops through the array of answers in the specified question object and assigns them to one of the four option buttons
 function setOptions() {
     var answerReset = [];
-    for (var i = 0; i < options.length; i++) {
+    for (var i = 0; i < optionList.children.length; i++) {
         var answersArr = allQuestions[questionCount - 1].answers;
         var randomIndex = Math.floor(Math.random() * answersArr.length);
-        options[i].children[1].textContent = answersArr[randomIndex];
+        optionList.children[i].children[0].children[1].textContent = answersArr[randomIndex];
         answerReset.push(answersArr.splice(randomIndex, 1));
     };
     for (var i = 0; i<answerReset.length; i++) {
@@ -289,3 +284,5 @@ restart.addEventListener("click", function() {
     score = 0;
     reveal(homepage);
 });
+
+console.log(optionList.children[0].children[0].children[1]);
