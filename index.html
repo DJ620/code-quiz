@@ -21,7 +21,9 @@
         </section>
     </header>
     <main>
+        <!--The element that will hold the outcome of each question-->
         <h1 class="display-3 timer-color font-weight-bold" id="outcome"></h1>
+
 
         <!--Homepage that describes the rules of the quiz-->
         <section class="container" id="homepage">
@@ -51,10 +53,15 @@
             </div>
         </section>
 
+
         <!--Question-->
         <section class="container mt-5" id="question-block">
             <h1 class="text-center font-weight-bold"><u>Question <span id="question-number"></span></u></h1>
+            
+            <!--The element that will hold the question itself-->
             <h3 class="text-center" id="question"></h3>
+
+            <!--The list that will hold the answer options for each question-->
              <ul class="row ml-5" id="options-list">
                 <div class="col-12 ml-5">
                     <li><h3 class="d-inline timer-color">A)</h3><button class="my-2 ml-2 btn btn-lg ruby text-white d-inline"></button></li>
@@ -71,11 +78,14 @@
             </ul>
         </section>
 
+
         <!--Block of HTML revealed when timer runs out-->
         <section id="finish">
             <h1 class="display-1 font-weight-bold text-center timer-color">Finished!</h1>
             <h1 class="display-3 text-center">Final Score: <span id="final-score"></span></h1>
             <h2 class="text-center">Enter your initials:</h2>
+
+            <!--The form where users can submit their initials and score for the highscore board-->
             <form method="POST">
                 <div class="row">
                     <div class="col-12 d-flex justify-content-center">
@@ -90,9 +100,12 @@
             </form>
         </section>
        
+
         <!--Highscores Board-->
         <section id="highscore-block">
             <h1 class="display-1 text-center font-weight-bold timer-color">Highscores</h1>
+
+            <!--The table that will hold the highscores data-->
             <table class="table text-center">
                 <thead>
                 <tr>
