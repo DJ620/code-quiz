@@ -145,7 +145,8 @@ function correct() {
 };
 
 /* When called, this function displays the word 'wrong' on the screen and subtracts 10 seconds from the counter 
-   variable and 3 points from the score variable */
+   variable and 3 points from the score variable. The correct answer's background will change color to let the
+   user know the correct answer */
 function incorrect() {
     outcome.textContent = "Wrong.";
     reveal(outcome);
@@ -194,9 +195,12 @@ function finished() {
    If the array has run out, it will run the finished function and end the countdown */
 function nextQuestion() {
     hide(outcome);
+
+    /* Changes the background-color of any buttons that might have changed due to an
+       incorrectly answered question */
     for (var i = 0; i < optionList.children.length; i++) {
         optionList.children[i].children[0].children[1].classList.remove("correct");
-    }
+    };
     if (allQuestions[questionCount - 1] === undefined) {
         clearInterval(timerInterval);
         finished();

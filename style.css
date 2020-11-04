@@ -48,7 +48,7 @@ main {
 }
 
 .correct {
-    background-color: green !important;
+    background-color: #004F2D !important;
 }
 
 #question-block, #highscore-block {
