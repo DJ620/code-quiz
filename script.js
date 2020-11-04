@@ -109,8 +109,9 @@ var question15 = {
 
 // Arrays--------------------------------------------------------------------
 var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10, question11, question12, question13, question14, question15];
-
 var playersArr = [];
+
+// This block of code checks if there is data in local storage, and if there is, it pushes it to the above playersArr
 var checkScores = JSON.parse(localStorage.getItem("players"));
 if (checkScores) {
     for (var i =0; i<checkScores.length; i++) {
@@ -150,11 +151,18 @@ function incorrect() {
 function setOptions() {
     var answerReset = [];
     for (var i = 0; i < optionList.children.length; i++) {
+
+        // Fetches the answers from the current question's object
         var answersArr = allQuestions[questionCount - 1].answers;
         var randomIndex = Math.floor(Math.random() * answersArr.length);
+
+        // Randomizes the order of the answers so that if a user takes the quiz multiple times, the answers will be in a different order
         optionList.children[i].children[0].children[1].textContent = answersArr[randomIndex];
+
+        // Ensures that answers don't get duplicated by moving them to a new array once they've been assigned a button
         answerReset.push(answersArr.splice(randomIndex, 1));
     };
+    // Resets the answers back to their original array
     for (var i = 0; i<answerReset.length; i++) {
         var answersArr = allQuestions[questionCount - 1].answers;
         answersArr[answersArr.length] = answerReset[i];
@@ -183,29 +191,31 @@ function nextQuestion() {
     };
 };
 
+// When called, this function displays the highscores table
 function scoreTable() {
+    hide(scoreBtn);
+    reveal(restart);
     clearScore();
+
+    // Fetches the previous high scores from local storage
     var playersArr = JSON.parse(localStorage.getItem("players"));
+
+    // Loops through the array of player objects and creates elements to display the rank, initials, and score of the 10 best players
     for (var i=0; i<playersArr.length; i++) {
         var tableRank = document.createElement("td");
         tableRank.textContent = i+1;
-        style(tableRank);
         var tableInitials = document.createElement("td");
         tableInitials.textContent = playersArr[i].initials;
-        style(tableInitials);
         var tableScore = document.createElement("td");
         tableScore.textContent = playersArr[i].score;
-        style(tableScore);
+
+        // Creates a row for each player, and attaches the elements made above
         var row = document.createElement("tr");
         table.append(row);
         row.append(tableRank);
         row.append(tableInitials);
         row.append(tableScore);
     };
-};
-
-function style(element) {
-    element.setAttribute("class", "h3");
 };
 
 function clearScore () {
@@ -261,6 +271,10 @@ optionList.addEventListener("click", function(event) {
 
 submitBtn.addEventListener("click", function(event) {
     event.preventDefault();
+    if (!initialsInput.value) {
+        alert("Please enter your initials");
+        return;
+    };
     playersArr[playersArr.length] = {
         initials: initialsInput.value,
         score: score
@@ -279,10 +293,10 @@ submitBtn.addEventListener("click", function(event) {
 
 restart.addEventListener("click", function() {
     hide(scoreBlock);
+    hide(restart);
+    reveal(scoreBtn);
     questionCount = 1;
     counter = 60;
     score = 0;
     reveal(homepage);
 });
-
-console.log(optionList.children[0].children[0].children[1]);
