@@ -105,8 +105,8 @@ var question14 = {
 };
 var question15 = {
     question: "What JavaScript method do you use when you want a function to run when a specific element is clicked?",
-    answers: [".whenClicked()", ".addEvent", ".addEventListener", ".listenForEvent"],
-    correct: ".addEventListener"
+    answers: [".whenClicked()", ".addEvent()", ".addEventListener()", ".listenForEvent()"],
+    correct: ".addEventListener()"
 };
 
 // Arrays==========================================================================================================================
@@ -147,13 +147,14 @@ function correct() {
 };
 
 /* When called, this function displays the word 'wrong' on the screen and subtracts 10 seconds from the counter 
-   variable and 3 points from the score variable. The correct answer's background will change color to let the
-   user know the correct answer */
+   variable and 3 points from the score variable */
 function incorrect() {
     outcome.textContent = "Wrong.";
     reveal(outcome);
     counter -= 10;
     score -= 3;
+
+    // The correct answer's background will change color to let the user know what the correct answer is
     for (var i = 0; i < optionList.children.length; i++) {
         if (optionList.children[i].children[0].children[1].textContent === allQuestions[questionCount - 2].correct) {
             optionList.children[i].children[0].children[1].classList.add("correct");
@@ -185,7 +186,8 @@ function setOptions() {
     };
 };
 
-// When called, this function displays the finished message, final score, and initials submission on the screen
+/* When called, this function displays the finished message, final score, and initials submission 
+   on the screen and stops the music if the music is still being played */
 function finished() {
     hide(questionBlock);
     hide(stopMusic);
@@ -196,8 +198,7 @@ function finished() {
     jeopardy.pause();
 };
 
-/* When called, this function displays the next question in the allQuestions array. 
-   If the array has run out, it will run the finished function and end the countdown */
+// When called, this function displays the next question in the allQuestions array  
 function nextQuestion() {
     hide(outcome);
 
@@ -206,6 +207,8 @@ function nextQuestion() {
     for (var i = 0; i < optionList.children.length; i++) {
         optionList.children[i].children[0].children[1].classList.remove("correct");
     };
+
+    // If the array of questions has run out, it will run the finished function and end the countdown
     if (allQuestions[questionCount - 1] === undefined) {
         clearInterval(timerInterval);
         finished();
@@ -223,7 +226,6 @@ function scoreTable() {
     hide(stopMusic);
     reveal(restart);
     clearScore();
-    jeopardy.pause();
 
     // Fetches the previous high scores from local storage
     var playersArr = JSON.parse(localStorage.getItem("players"));
@@ -268,8 +270,8 @@ scoreBtn.addEventListener("click", function() {
     timer.textContent = 0;
 })
 
-/* When the start button is clicked, the first question is displayed and the counter begins 
-   counting down from 60. Once the counter reaches 0, the finished section is displayed */
+/* When the start button is clicked, the first question is displayed, background music begins to play, and 
+   the counter begins counting down from 60. Once the counter reaches 0, the finished section is displayed */
 start.addEventListener("click", function() {
     hide(homepage);
     hide(scoreBtn);
@@ -291,6 +293,7 @@ start.addEventListener("click", function() {
     }, 1000); 
 });
 
+// When clicked, this button stops the background music from playing and replaces the button with the 'View Highscores' button
 stopMusic.addEventListener("click", function() {
     jeopardy.pause();
     hide(stopMusic);
@@ -323,6 +326,8 @@ submitBtn.addEventListener("click", function(event) {
         alert("Please enter your initials");
         return;
     };
+
+    // This code is creating a new object with the user's initials and score and storing it at the end of the playersArr array
     playersArr[playersArr.length] = {
         initials: initialsInput.value,
         score: score
