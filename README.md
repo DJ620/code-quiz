@@ -8,7 +8,7 @@ One feature of this quiz that I am very proud of is that each time a user takes 
 
 I also utilized local storage to hold the data of user's initials and their score. The local storage will hold the 10 highest scores played on a user's device, and display them on the Highscores board.
 
-I used Bootstrap to help make the layout responsive, but also added in some of my own CSS styles to make the quiz page look interesting. I found a great website, Coolors.io, that generates color schemes, and used it to choose colors for this quiz page. I also took the font, Overpass, from Google fonts. The background music is the theme from the popular TV game show, 'Jeopardy'.
+I used Bootstrap to help make the layout responsive, but also added in some of my own CSS styles to make the quiz page look interesting. I found a great website, Coolors.io, that generates color schemes, and used it to choose colors for this quiz page. I created a favicon using the website favicon.io. I also took the font, Overpass, from Google fonts. The background music is the theme from the popular TV game show, 'Jeopardy'.
 
 This coding quiz can be used in many ways. The most obvious would be to test someone's knowledge of HTML, CSS, and JavaScript. I believe it can also be used by me to show that I have a good understanding of basic JavaScript.
 
@@ -53,7 +53,15 @@ http://getbootstrap.com
 
 I utilized the website coolors.io to generate a color scheme.
 
-https://coolors.co/
+https://coolors.co
+
+I created a favicon on favicon.io
+
+https://favicon.io
+
+I took the font 'Overpass' from Google Fonts
+
+https://fonts.google.com
 
 In addition to what I have learned from my bootcamp, I also learned a great deal from the websites CodeCademy and FreeCodeCamp.
 
