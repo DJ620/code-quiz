@@ -4,7 +4,7 @@
 
 This is a coding quiz created by me, DJ Hersh, to test the user's knowledge on basic HTML, CSS, and JavaScript. In building this quiz, I utilized many concepts taught to me in the UCLA Extension Full-Stack Web Development Coding Bootcamp by Bryan Swarthout.
 
-One of the features of this quiz that I am very proud of is that each time you take it, the options for answers on each question will be in a different order. I was able to write an algorithm that randomized the order of the answer options each time the question is displayed by storing questions and answers into objects. I then put those objects into an array, so that I could loop through the array and not have to write more lines of code.
+One feature of this quiz that I am very proud of is that each time a user takes it, the questions will be in a different order, and each time the user comes across a question, the answer options will be in a different order. I was able to write an algorithm that did this by storing my questions and answers in objects, and put those objects in an array. I then generated a random index of that array, spliced that index out and moved it into a new array, so that I could avoid the same question appearing more than once in a single round of the quiz. I did the same for the answer options. If the user decides to take the quiz again, the answers are reset back into their original question object, and the question objects themselves are reset back into their original array.
 
 I also utilized local storage to hold the data of user's initials and their score. The local storage will hold the 10 highest scores played on a user's device, and display them on the Highscores board.
 
