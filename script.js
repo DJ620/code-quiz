@@ -165,7 +165,7 @@ function incorrect() {
     };
 };
 
-// When called, this function displays the next question, randomly sorted  
+// When called, this function displays a randomly selected question 
 function nextQuestion() {
     hide(outcome);
 
