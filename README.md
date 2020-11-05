@@ -25,19 +25,19 @@ https://dj620.github.io/code-quiz/
 
 ## Usage 
 
-![Homepage screenshot](homepage.png)
+![Homepage screenshot](assets/homepage.png)
 
 When you first get to the page, you will see a message describing the quiz and its rules. The user will have 60 seconds to answer as many questions as they can. If they get an answer right, they gain 5 points. If they get an answer wrong, they lose 3 points, and 10 seconds off of the timer. There will be a button in the top left that will allow you to view the Highscores board, as well as a button at the bottom to start the quiz.
 
-![Question screenshot](question.png)
+![Question screenshot](assets/question.png)
 
 When the user clicks start, the background music will begin to play, and the timer will begin counting down from 60. The 'View Highscores!' button will be replaced with a new button that allows the user to switch off the music if they'd rather take the quiz in silence. Each question will be formatted the same, with four options. If the user chooses the correct answer, the word 'Correct!' will be displayed in the bottom right of the screen. If the user chooses the wrong answer, the word 'Wrong' will be displayed. As stated in my description, each time a user takes the quiz, the answer options will be in a different order.
 
-![Finished screenshot](finished.png)
+![Finished screenshot](assets/finished.png)
 
 When the user runs out of time, or finishes answering all questions, the music will stop playing (if they didn't turn the music off earlier), and they will be presented with their final score and the option of entering their initials to be displayed on the Highscores board. 
 
-![Highscores Board screenshot](highscores.png)
+![Highscores Board screenshot](assets/highscores.png)
 
 Once the user has submitted their initials, or if at any time the user hits the 'View Highscores' button, they will be taken to the Highscores Board. This page will display up to the 10 highest scores played on that user's device. This data is stored in local storage as an array of objects. The algorithm dynamically creates the objects by setting them to the index of the length of the array.
 
