@@ -31,7 +31,7 @@ When you first get to the page, you will see a message describing the quiz and i
 
 ![Question screenshot](assets/question.png)
 
-When the user clicks start, the background music will begin to play, and the timer will begin counting down from 60. The 'View Highscores!' button will be replaced with a new button that allows the user to switch off the music if they'd rather take the quiz in silence. Each question will be formatted the same, with four options. If the user chooses the correct answer, the word 'Correct!' will be displayed in the bottom right of the screen. If the user chooses the wrong answer, the word 'Wrong' will be displayed. As stated in my description, each time a user takes the quiz, the answer options will be in a different order.
+When the user clicks start, the background music will begin to play, and the timer will begin counting down from 60. The 'View Highscores!' button will be replaced with a new button that allows the user to switch off the music if they'd rather take the quiz in silence. Each question will be formatted the same, with four options. If the user chooses the correct answer, the word 'Correct!' will be displayed in the bottom right of the screen. If the user chooses the wrong answer, the word 'Wrong' will be displayed, and the correct answer will change it's background color so the user can identify which of the options was correct. As stated in my description, each time a user takes the quiz, the answer options will be in a different order.
 
 ![Finished screenshot](assets/finished.png)
 
