@@ -232,22 +232,25 @@ function scoreTable() {
     // Fetches the previous high scores from local storage
     var playersArr = JSON.parse(localStorage.getItem("players"));
 
-    /* Loops through the array of player objects and creates elements to display 
-    the rank, initials, and score of the 10 best players */
-    for (var i=0; i<playersArr.length; i++) {
-        var tableRank = document.createElement("td");
-        tableRank.textContent = i+1;
-        var tableInitials = document.createElement("td");
-        tableInitials.textContent = playersArr[i].initials;
-        var tableScore = document.createElement("td");
-        tableScore.textContent = playersArr[i].score;
+    // Only runs the following code if there are scores stored in local storage
+    if (playersArr) {
+        /* Loops through the array of player objects and creates elements to display 
+        the rank, initials, and score of the 10 best players */
+        for (var i=0; i<playersArr.length; i++) {
+            var tableRank = document.createElement("td");
+            tableRank.textContent = i+1;
+            var tableInitials = document.createElement("td");
+            tableInitials.textContent = playersArr[i].initials;
+            var tableScore = document.createElement("td");
+            tableScore.textContent = playersArr[i].score;
 
-        // Creates a row for each player, and attaches the elements made above
-        var row = document.createElement("tr");
-        table.append(row);
-        row.append(tableRank);
-        row.append(tableInitials);
-        row.append(tableScore);
+            // Creates a row for each player, and attaches the elements made above
+            var row = document.createElement("tr");
+            table.append(row);
+            row.append(tableRank);
+            row.append(tableInitials);
+            row.append(tableScore);
+        };
     };
 };
 
@@ -331,7 +334,9 @@ submitBtn.addEventListener("click", function(event) {
 
     // Sorts the objects in the playersArr array by highest score
     if (playersArr.length > 1) {
-        playersArr.sort((a,b)=>b.score-a.score);
+        playersArr.sort(function(a,b) {
+            return b.score-a.score; 
+        });
     };
 
     // This conditional statement ensures that local storage only holds the 10 highest scores
