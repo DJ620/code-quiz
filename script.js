@@ -112,8 +112,11 @@ var question15 = {
 // Arrays==========================================================================================================================
 
 // An array of all the question objects
-var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, 
-                    question9, question10, question11, question12, question13, question14, question15];
+var questionsArr = [question1, question2, question3, question4, question5, question6, question7, question8, 
+    question9, question10, question11, question12, question13, question14, question15];
+
+// An empty array used to push the randomly selected question into
+var allQuestions = [];
 
 // An empty array that will hold the 10 previous highest scores
 var playersArr = [];
@@ -162,7 +165,7 @@ function incorrect() {
     };
 };
 
-// When called, this function displays the next question in the allQuestions array  
+// When called, this function displays the next question, randomly sorted  
 function nextQuestion() {
     hide(outcome);
 
@@ -171,6 +174,10 @@ function nextQuestion() {
     for (var i = 0; i < optionList.children.length; i++) {
         optionList.children[i].children[0].children[1].classList.remove("correct");
     };
+
+    // This code selects a random question from the questionsArr array and splices it into the allQuestions array
+    var randomIndex = Math.floor(Math.random() * questionsArr.length);
+    allQuestions.push(...questionsArr.splice(randomIndex, 1));
 
     // If the array of questions has run out, it will run the finished function and end the countdown
     if (allQuestions[questionCount - 1] === undefined) {
@@ -263,6 +270,9 @@ start.addEventListener("click", function() {
     hide(scoreBtn);
     reveal(questionBlock);
     reveal(stopMusic);
+
+    // This code resets the questions back into their original array
+    questionsArr.push(...allQuestions.splice(0));
     nextQuestion();
     jeopardy.currentTime = 0;
     jeopardy.play();

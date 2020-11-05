@@ -198,8 +198,8 @@ function nextQuestion() {
     };
 
     var randomIndex = Math.floor(Math.random() * questionsArr.length);
-    allQuestions.push(questionsArr.splice(randomIndex, 1));
-    console.log(allQuestions);
+    allQuestions.push(...questionsArr.splice(randomIndex, 1));
+
     // If the array of questions has run out, it will run the finished function and end the countdown
     if (allQuestions[questionCount - 1] === undefined) {
         clearInterval(timerInterval);
@@ -267,6 +267,7 @@ start.addEventListener("click", function() {
     hide(scoreBtn);
     reveal(questionBlock);
     reveal(stopMusic);
+    questionsArr.push(...allQuestions.splice(0));
     nextQuestion();
     jeopardy.currentTime = 0;
     jeopardy.play();
