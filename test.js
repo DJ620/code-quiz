@@ -112,8 +112,9 @@ var question15 = {
 // Arrays==========================================================================================================================
 
 // An array of all the question objects
-var allQuestions = [question1, question2, question3, question4, question5, question6, question7, question8, 
+var questionsArr = [question1, question2, question3, question4, question5, question6, question7, question8, 
                     question9, question10, question11, question12, question13, question14, question15];
+var allQuestions = [];
 
 // An empty array that will hold the 10 previous highest scores
 var playersArr = [];
@@ -162,28 +163,6 @@ function incorrect() {
     };
 };
 
-// When called, this function displays the next question in the allQuestions array  
-function nextQuestion() {
-    hide(outcome);
-
-    /* Changes the background-color of any buttons that might have changed due to an
-       incorrectly answered question */
-    for (var i = 0; i < optionList.children.length; i++) {
-        optionList.children[i].children[0].children[1].classList.remove("correct");
-    };
-
-    // If the array of questions has run out, it will run the finished function and end the countdown
-    if (allQuestions[questionCount - 1] === undefined) {
-        clearInterval(timerInterval);
-        finished();
-    } else {
-        questionNum.textContent = questionCount;
-        question.textContent = allQuestions[questionCount - 1].question;
-        setOptions();
-        questionCount++;
-    };
-};
-
 /* When called, this function loops through the array of answers in the specified question object and assigns 
    them to one of the four option buttons */
 function setOptions() {
@@ -205,6 +184,31 @@ function setOptions() {
     for (var i = 0; i<answerReset.length; i++) {
         var answersArr = allQuestions[questionCount - 1].answers;
         answersArr[answersArr.length] = answerReset[i];
+    };
+};
+
+// When called, this function displays the next question in the allQuestions array  
+function nextQuestion() {
+    hide(outcome);
+
+    /* Changes the background-color of any buttons that might have changed due to an
+       incorrectly answered question */
+    for (var i = 0; i < optionList.children.length; i++) {
+        optionList.children[i].children[0].children[1].classList.remove("correct");
+    };
+
+    var randomIndex = Math.floor(Math.random() * questionsArr.length);
+    allQuestions.push(questionsArr.splice(randomIndex, 1));
+    console.log(allQuestions);
+    // If the array of questions has run out, it will run the finished function and end the countdown
+    if (allQuestions[questionCount - 1] === undefined) {
+        clearInterval(timerInterval);
+        finished();
+    } else {
+        questionNum.textContent = questionCount;
+        question.textContent = allQuestions[questionCount - 1].question;
+        setOptions();
+        questionCount++;
     };
 };
 
